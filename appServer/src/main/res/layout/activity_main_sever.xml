@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SERVER!"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:layout_marginTop="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvstatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NOT YES"
+        android:textColor="#FF0000"
+        android:layout_marginBottom="20dp"
+        android:textStyle="italic" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+
+        app:cardBackgroundColor="#D3FBF0"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:id="@+id/tvsevername"
+                android:textStyle="italic"
+                android:paddingLeft="10dp"
+                android:textColor="@color/black"
+                android:text="Server IP: "
+                android:background="@drawable/bacr"
+                />
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:paddingLeft="10dp"
+                android:gravity="center_vertical"
+                android:textSize="20sp"
+                android:textStyle="italic"
+                android:textColor="@color/black"
+                android:text="Sever port: "
+                android:id="@+id/tvServerpory"
+                android:background="@drawable/bacr"
+                />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/bntstart"
+                    android:onClick="onClickStartServe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="2dp"
+                    android:backgroundTint="#000000"
+                    android:textColor="@color/white"
+                    android:text="START" />
+                <Button
+                    android:id="@+id/bntstop"
+                    android:onClick="onClickStopServe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+
+                    android:layout_marginLeft="2dp"
+                    android:backgroundTint="@color/black"
+                    android:text="STOP" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+
+        android:hint="Tin nhắn ...."
+        app:passwordToggleEnabled="true"
+        android:gravity="center">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtinhandi"
+            android:layout_width="302dp"
+            android:layout_height="60dp"
+            android:background="@drawable/bacr"
+            android:textSize="20sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#181818"
+        android:text="Sent"
+        android:id="@+id/bnt_sent"
+        android:onClick="onClickSend"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tin nhắn từ client:"
+        android:gravity="center"
+        android:id="@+id/tv_nhantinnhan"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="40dp"
+        android:textColor="#03A9F4"
+        android:layout_marginEnd="40dp"/>
+</LinearLayout>

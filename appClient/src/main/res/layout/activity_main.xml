@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CLIENT!"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:layout_marginTop="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvshowReactxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kết nối tới sever"
+        android:textColor="#FF0000"
+        android:layout_marginBottom="20dp"
+        android:textStyle="italic" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_margin="10dp"
+
+        app:cardBackgroundColor="#D3FBF0"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_ed_username"
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_height="wrap_content"
+                android:hint="Nhập ip của máy bạn"
+                android:gravity="center">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edsevrname"
+                    android:layout_width="302dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="35dp"
+                    android:background="@drawable/bacr"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_height="wrap_content"
+                android:id="@+id/til_ed_password"
+                android:layout_marginTop="10dp"
+
+                android:hint="PORT:1234"
+                app:passwordToggleEnabled="true"
+                android:gravity="center">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edseverport"
+                    android:layout_width="302dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/bacr"
+                    android:textSize="20sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/bntclient"
+                android:layout_width="302dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/black"
+                android:text="KẾT NỐI TỚI SEVER" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+
+        android:hint="Tin nhắn ...."
+        app:passwordToggleEnabled="true"
+        android:gravity="center">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextText"
+            android:layout_width="302dp"
+            android:layout_height="60dp"
+            android:background="@drawable/bacr"
+            android:textSize="20sp" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#181818"
+        android:text="Sent"
+        android:id="@+id/bntsenserver"
+        android:textColor="@color/white" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tin nhắn từ sever:"
+        android:gravity="center"
+        android:id="@+id/tvshotinhan"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="40dp"
+        android:textColor="#03A9F4"
+        android:layout_marginEnd="40dp"/>
+</LinearLayout>
