@@ -23,12 +23,12 @@ import java.util.ArrayList;
 public class MainActivitySever extends AppCompatActivity {
     // Khai báo các view
     private TextView tvServerName, tvServerPort, tvStatus, tvReceivedMessage;
-    private String serverIP = "10.103.238.192"; // ĐỊA CHỈ IP MÁY
+    private String serverIP = "26.198.200.168"; // ĐỊA CHỈ IP MÁY
     private int serverPort = 1234; // PORT
     private Button bntStart, bntStop, bntSend;
     private EditText edMessage;
     private ServerThread serverThread;
-// Sử dụng Handler để làm việc với giao diện trong Thread
+    // Sử dụng Handler để làm việc với giao diện trong Thread
     private Handler handler = new Handler(Looper.getMainLooper());
 
     @Override
@@ -65,14 +65,20 @@ public class MainActivitySever extends AppCompatActivity {
             Toast.makeText(this, "SERVER Dừng", Toast.LENGTH_SHORT).show();
         }
     }
-// Xử lý nút gửi
+    // Xử lý nút gửi
     public void onClickSend(View view) {
+        // Lấy nội dung tin nhắn từ EditText "edMessage" và lưu vào biến "messageToSend"
         String messageToSend = edMessage.getText().toString();
+
+        // Kiểm tra xem "messageToSend" có rỗng không và "serverThread" có tồn tại không
         if (!messageToSend.isEmpty() && serverThread != null) {
+            // Gửi tin nhắn tới tất cả các client thông qua đối tượng "serverThread" bằng cách gọi phương thức "sendMessageToClients"
             serverThread.sendMessageToClients(messageToSend);
+            // Xóa nội dung trong EditText "edMessage" để chuẩn bị cho việc nhập tin nhắn mới
             edMessage.setText("");
         }
     }
+
     // Lớp ServerThread chạy trong Thread riêng biệt để lắng nghe các kết nối từ Client
     class ServerThread extends Thread {
         private boolean serverRunning;
@@ -82,29 +88,40 @@ public class MainActivitySever extends AppCompatActivity {
             serverRunning = true;
             start();
         }
-        // Phương stop
+        // Phương stop /
         public void stopServer() {
+            // Đánh dấu là Server không còn hoạt động bằng cách đặt biến "serverRunning" thành false
             serverRunning = false;
+
+            // Kiểm tra xem "serverSocket" có tồn tại hay không
             if (serverSocket != null) {
                 try {
+                    // Nếu tồn tại, đóng kết nối serverSocket để dừng Server
                     serverSocket.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
+
+            // Gửi một Runnable tới luồng giao diện (UI thread) để cập nhật giao diện sau khi dừng Server
             handler.post(new Runnable() {
                 @Override
                 public void run() {
+                    // Hiển thị văn bản "Server stopped" trong TextView "tvStatus"
                     tvStatus.setText("Server stopped");
                 }
             });
         }
+
         // Phương thức gửi tin nhắn đến tất cả các Client đã kết nối
         public void sendMessageToClients(final String message) {
+            // Kiểm tra xem "serverSocket" có tồn tại hay không
             if (serverSocket != null) {
+                // Tạo một luồng mới để gửi tin nhắn tới tất cả các client
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
+                        // Duyệt qua danh sách các ClientHandler và gửi tin nhắn tới từng client
                         for (ClientHandler client : clientsList) {
                             client.sendMessageToClient(message);
                         }
@@ -112,6 +129,7 @@ public class MainActivitySever extends AppCompatActivity {
                 }).start();
             }
         }
+
 
 
         private ArrayList<ClientHandler> clientsList = new ArrayList<>();
@@ -184,7 +202,7 @@ public class MainActivitySever extends AppCompatActivity {
                             public void run() {
                                 // Set tin nhắn lên texview giao diện
                                 tvReceivedMessage.setText("Tin nhắn từ client: " + finalMessage);
-
+                                // thông báocuarar lab 7
                                 // thông báo co tin nhắn mới
                                 final Dialog dialog = new Dialog(MainActivitySever.this);
                                 // set layout dialog
@@ -196,7 +214,7 @@ public class MainActivitySever extends AppCompatActivity {
                                 // show dialog
                                 dialog.show();
 
-                               // set dialog sau 4s thì ẩn
+                                // set dialog sau 4s thì ẩn
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
